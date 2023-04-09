@@ -5,6 +5,7 @@
 // import GenerateQR from "@/component/GenQR";
 
 export default function Home() {
+    const appName = process.env.NEXT_APP_NAME
     // const [open, setOpen] = useState(false)
     // const [idKepalaKeluarga, setIdKepalaKeluarga] = useState(0);
     // const [idAnak, setIdAnak] = useState("")
@@ -18,6 +19,7 @@ export default function Home() {
     // }
   return (
     <div className="grid h-screen place-items-center">
+      <h1>{appName}</h1>
       {/*<div className="overflow-hidden bg-white shadow rounded-lg">*/}
       {/*    <div className="px-4 py-5 sm:px-6 ">*/}
       {/*        <h3 className="text-base font-semibold leading-6 text-gray-900  text-center">Registrasi</h3>*/}

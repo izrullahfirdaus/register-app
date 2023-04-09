@@ -7,12 +7,13 @@ import {useEffect, useState} from "react";
 import {error} from "next/dist/build/output/log";
 
 const Page = () => {
+    const apiURL = process.env.NEXT_API_URL
     const {query} = useRouter()
     const [data, setData] = useState(null)
     const [loading, setLoading] = useState(false)
     const id = query.id
     console.log("ini cuy parameternya = ",query.id)
-    const url = `http://localhost:3111/api/tamu/${id}`
+    const url = `${apiURL}/tamu/${id}`
     console.log(url)
 
     useEffect(() => {

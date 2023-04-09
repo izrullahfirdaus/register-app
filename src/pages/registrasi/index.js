@@ -3,6 +3,7 @@ import {Button, Table} from "flowbite-react";
 import {useEffect, useState} from "react";
 import CustomModal from "@/component/CustomModal";
 
+export const apiURL = process.env.NEXT_API_URL
 
 const Registrasi = ({daftarTamu}) => {
     const [open, setOpen] = useState(false);
@@ -126,7 +127,8 @@ const Registrasi = ({daftarTamu}) => {
     )
 }
 export async function getStaticProps(){
-    const res = await fetch('http://localhost:3111/api/tamu');
+
+    const res = await fetch(`${apiURL}/tamu`);
     const daftarTamu = await res.json()
 
     return {

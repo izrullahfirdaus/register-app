@@ -5,6 +5,7 @@ import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
 import loading from '../static/loading.json'
 const Checkin = () => {
+    const apiURL = process.env.NEXT_API_URL
     const {query} = useRouter()
     const [tesIphone, setTesIphone] = useState("belum di pencet")
     const [data, setData] = useState(null)
@@ -14,7 +15,7 @@ const Checkin = () => {
 
     const detailTamu = (id) => {
         console.log("Fetching id ini cuy",id)
-        fetch(`http://192.168.0.118:3111/api/tamu/${id}`)
+        fetch(`${apiURL}/tamu/${id}`)
             .then((res) => res.json())
             .then((data) => {
                 setData(data.message)
@@ -35,7 +36,7 @@ const Checkin = () => {
         console.log("update cuy - ",id)
         console.log("dari hape nih-", id)
         setTesIphone(id)
-        await fetch(`http://192.168.0.118:3111/api/tamu/${id}`, {
+        await fetch(`${apiURL}/tamu/${id}`, {
             method: "PUT",
             body: JSON.stringify({
                 statusCheckin: true
