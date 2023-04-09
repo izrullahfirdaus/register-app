@@ -2,7 +2,8 @@ import {Modal} from "flowbite-react";
 import {QRCodeCanvas} from "qrcode.react";
 
 const GenQR = ({id, handleClose}) => {
-    const dataValue = `http://192.168.0.118:3000/checkin/${id}`
+    const genLink = process.env.NEXT_QR_LINK
+    const dataValue = `${genLink}/checkin/${id}`
     const qrCode = (
         <QRCodeCanvas
             value={dataValue}
