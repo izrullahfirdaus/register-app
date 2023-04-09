@@ -25,12 +25,13 @@ export const styles = {
 }
 
 const CustomModal = ({open, handleCLose, condition, idTamu}) => {
+    const apiUrl = process.env.NEXT_API_URL
     const router = useRouter()
 
     const [dataTamu, setDataTamu] = useState(initialTamu)
     const addData = (dataTamu) => {
         console.log("cuy",dataTamu)
-        fetch("http://localhost:3111/api/tamu", {
+        fetch(`${apiUrl}/tamu`, {
             method: "POST",
             body: JSON.stringify(dataTamu),
             headers: {
