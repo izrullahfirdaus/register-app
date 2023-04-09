@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {QrReader} from 'react-qr-reader';
+// import {QrReader} from 'react-qr-reader';
 const Scan = () => {
 
     const [startScan, setStartScan] = useState(false);
@@ -36,12 +36,12 @@ const Scan = () => {
                 <div>
                     {startScan && (
                         <>
-                            <QrReader
-                                facingMode="environment"
-                                onError={handleError}
-                                onScan={handleScan}
-                                style={{ width: "300px" }}
-                            />
+                            {/*<QrReader*/}
+                            {/*    facingMode="environment"*/}
+                            {/*    onError={handleError}*/}
+                            {/*    onScan={handleScan}*/}
+                            {/*    style={{ width: "300px" }}*/}
+                            {/*/>*/}
                         </>
                     )}
                 </div>
