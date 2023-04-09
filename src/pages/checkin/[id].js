@@ -7,6 +7,7 @@ import loading from '../static/loading.json'
 const Checkin = () => {
     const apiURL = process.env.NEXT_API_URL
     const {query} = useRouter()
+    const router = useRouter()
     const [tesIphone, setTesIphone] = useState("belum di pencet")
     const [data, setData] = useState(null)
     const id = query.id
@@ -47,6 +48,7 @@ const Checkin = () => {
         }).catch((err) => {
             console.log(err)
         })
+        router.push(`/success/${id}`)
     }
     const handleProcess = async (id) => {
 
