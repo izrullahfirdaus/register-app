@@ -31,7 +31,7 @@ const Registrasi = ({daftarTamu}) => {
     });
 
     const data = daftarTamu.message
-    console.log(condition)
+    console.log("ini kondisi skrg",condition)
 
 
     const tamu = data.map((dataTamu, index) => {
@@ -119,7 +119,7 @@ const Registrasi = ({daftarTamu}) => {
                             </Table.Body>
                         </Table>
                     </div>
-                    <CustomModal idTamu={idTamu} condition={condition} open={open} handleCLose={handleClose} />
+                    <CustomModal idTamu={idTamu} condition={condition} open={open} handleCLose={handleClose}/>
                 </div>
 
             </div>

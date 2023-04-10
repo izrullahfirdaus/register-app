@@ -1,7 +1,17 @@
 import {Modal} from "flowbite-react";
 import {QRCodeCanvas} from "qrcode.react";
+import {loadDetailTamu} from "@/cons/fun";
+import {useEffect, useState} from "react";
 
 const GenQR = ({id, handleClose}) => {
+    const [data, setData] = useState(null)
+
+    loadDetailTamu(id).then((res) => {
+        setData(res)
+    })
+
+    // console.log(id)
+
     const genLink = process.env.NEXT_QR_LINK
     const dataValue = `${genLink}/checkin/${id}`
     const qrCode = (
@@ -19,9 +29,15 @@ const GenQR = ({id, handleClose}) => {
             </Modal.Header>
             <Modal.Body>
                 <div className="grid">
-                    <div>
-                        <p className="text-center">Ini qr nya dengan id: {id}</p>
-                    </div>
+                    {!data ? (
+                        <h3>Loading pak....</h3>
+                    ) : (
+                        <div>
+                            <p className="text-center text-md">Nama Tamu: </p><p className="font-bold text-md">{data.namaTamu}</p>
+
+                        </div>
+                    )}
+
                     <div>
                         {qrCode}
                     </div>

@@ -28,7 +28,6 @@ const CustomModal = ({open, handleCLose, condition, idTamu}) => {
     const apiUrl = process.env.NEXT_API_URL
     const router = useRouter()
 
-    const [dataTamu, setDataTamu] = useState(initialTamu)
     const addData = (dataTamu) => {
         console.log("cuy",dataTamu)
         fetch(`${apiUrl}/tamu`, {
@@ -62,7 +61,7 @@ const CustomModal = ({open, handleCLose, condition, idTamu}) => {
 
     return (
         <Modal show={open} onClose={handleCLose}>
-            {condition === "new-user" ? (
+            {condition === "new-user" && (
                 <Formik initialValues={initialTamu} onSubmit={(values, {setSubmitting, resetForm}) => {
                     const data = {...values, keteranganTamu: idKeluarga, umur: jenisUmur}
                     setTimeout(() => {
@@ -199,8 +198,10 @@ const CustomModal = ({open, handleCLose, condition, idTamu}) => {
                     )}
 
                 </Formik>
-            ) : (
-                <GenQR id={idTamu} handleClose={handleCLose}/>
+            )}
+
+            {condition === "generate-qr" &&  (
+                <GenQR id={idTamu} handleClose={handleCLose} />
             )}
 
 
