@@ -8,11 +8,12 @@ const Checkin = () => {
     const apiURL = process.env.NEXT_API_URL
     const {query} = useRouter()
     const router = useRouter()
-    const [tesIphone, setTesIphone] = useState("belum di pencet")
     const [data, setData] = useState(null)
     const id = query.id
+    const [isLoading, setIsLoading]=useState(false)
 
-
+    const btnIzinkan = "bg-green-500 text-white rounded-md px-4 py-2 mr-4"
+    const btnProcess = "bg-green-500 text-white rounded-md px-4 py-2 mr-4 opacity-50"
 
     const detailTamu = (id) => {
         console.log("Fetching id ini cuy",id)
@@ -20,7 +21,7 @@ const Checkin = () => {
             .then((res) => res.json())
             .then((data) => {
                 setData(data.message)
-                console.log("sukses fetch", data.message.namaTamu)
+                setIsLoading(false)
             })
             .catch((err) => {
                 console.log(err)
@@ -34,9 +35,6 @@ const Checkin = () => {
 
 
     const updateCheckin = async (id) => {
-        console.log("update cuy - ",id)
-        console.log("dari hape nih-", id)
-        setTesIphone(id)
         await fetch(`${apiURL}/tamu/${id}`, {
             method: "PUT",
             body: JSON.stringify({
@@ -86,7 +84,12 @@ const Checkin = () => {
                         </div>
                         {data.statusCheckin ? "" : (
                             <div className="flex flex-row justify-center">
-                                <button className="bg-green-500 text-white rounded-md px-4 py-2 mr-4" onClick={() => handleProcess(data._id)}>Izinkan</button>
+                                <button className={isLoading === true ? btnProcess : btnIzinkan} disabled={isLoading} onClick={() => {
+                                    setIsLoading(true)
+                                    handleProcess(data._id)
+                                }}>
+                                    {isLoading === true ? "Loading" : "Izinkan"}
+                                </button>
                                 <button className="bg-red-500 text-white rounded-md px-4 py-2">Tolak</button>
                             </div>
                         )}
