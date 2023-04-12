@@ -1,7 +1,9 @@
 import {Modal} from "flowbite-react";
 import {QRCodeCanvas} from "qrcode.react";
 import {loadDetailTamu} from "@/cons/fun";
-import {useEffect, useState} from "react";
+import {useState} from "react";
+import loading from "@/pages/static/loading.json"
+import Lottie from "lottie-react";
 
 const GenQR = ({id, handleClose}) => {
     const [data, setData] = useState(null)
@@ -9,8 +11,6 @@ const GenQR = ({id, handleClose}) => {
     loadDetailTamu(id).then((res) => {
         setData(res)
     })
-
-    // console.log(id)
 
     const genLink = process.env.NEXT_QR_LINK
     const dataValue = `${genLink}/checkin/${id}`
@@ -30,17 +30,31 @@ const GenQR = ({id, handleClose}) => {
             <Modal.Body>
                 <div className="grid">
                     {!data ? (
-                        <h3>Loading pak....</h3>
+                        <Lottie animationData={loading} loop={true} />
                     ) : (
-                        <div>
-                            <p className="text-center text-md">Nama Tamu: </p><p className="font-bold text-md">{data.namaTamu}</p>
+                        <>
+                            <div className="place-items-center">
+                                <table className="table-auto mx-auto">
+                                    <tbody>
+                                        <tr>
+                                            <td>Nama Tamu</td>
+                                            <td>:</td>
+                                            <td> <p className="font-bold text-md px-2">{data.namaTamu}</p></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Catatan</td>
+                                            <td>:</td>
+                                            <td> <p className="font-bold text-md px-2">{data.notes}</p></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div className="mx-auto mt-5">
+                                {qrCode}
+                            </div>
+                        </>
 
-                        </div>
                     )}
-
-                    <div>
-                        {qrCode}
-                    </div>
                 </div>
             </Modal.Body>
             <Modal.Footer>
