@@ -12,9 +12,7 @@ const Page = () => {
     const [data, setData] = useState(null)
     const [loading, setLoading] = useState(false)
     const id = query.id
-    console.log("ini cuy parameternya = ",query.id)
     const url = `${apiURL}/tamu/${id}`
-    console.log(url)
 
     useEffect(() => {
         setLoading(true)
@@ -43,7 +41,10 @@ const Page = () => {
                             {!data ? (
                                 <Lottie animationData={failed} loop={true} />
                             ) : (
-                                <Lottie animationData={success} loop={true} />
+                                <div className="grid">
+                                    <Lottie className="mx-auto" animationData={success} loop={true} />
+                                </div>
+
                             )}
 
                         </div>
