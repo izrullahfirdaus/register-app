@@ -2,14 +2,26 @@ import {thead} from "@/cons/nama";
 import {Button, Table} from "flowbite-react";
 import {useEffect, useState} from "react";
 import CustomModal from "@/component/CustomModal";
+import {loadDataTamu} from "@/cons/fun";
+import loading from "@/pages/static/loading.json"
+import Lottie from "lottie-react";
 
-export const apiURL = process.env.NEXT_API_URL
-
-const Registrasi = ({daftarTamu}) => {
+const Registrasi = () => {
     const [open, setOpen] = useState(false);
     const [openQr, setOpenQr] = useState(false);
     const [idTamu, setIdTamu] = useState(null);
     const [condition, setCondition] = useState(null);
+    const [daftarTamu, setDaftarTamu] = useState(null)
+
+    useEffect(() => {
+        if(!condition) {
+            loadDataTamu().then((res) => {
+                setDaftarTamu(res)
+            })
+        }
+
+    }, [condition])
+
     const handleOpen = (condition) => {
         setOpen(true)
         setCondition(condition)
@@ -30,11 +42,12 @@ const Registrasi = ({daftarTamu}) => {
         )
     });
 
-    const data = daftarTamu.message
+    console.log("load table", daftarTamu)
+    // const data = daftarTamu.message
     console.log("ini kondisi skrg",condition)
 
 
-    const tamu = data.map((dataTamu, index) => {
+    const tamu = (daftarTamu || []).map((dataTamu, index) => {
         const checkUndian = (undian) => {
             if(undian === true) {
                 return "Dapat"
@@ -105,19 +118,24 @@ const Registrasi = ({daftarTamu}) => {
                         <button className="px-4 py-2 rounded-md bg-blue-500 text-white" onClick={() => handleOpen("new-user")}>Tambah Nama Tamu</button>
                     </div>
                     <div className="p-5">
-                        <Table hoverable={true} >
-                            <Table.Head>
-                                {tableHead}
-                                <Table.HeadCell>
+                        {!daftarTamu ? (
+                            <Lottie animationData={loading} loop={true}/>
+                        ) : (
+                            <Table hoverable={true} >
+                                <Table.Head>
+                                    {tableHead}
+                                    <Table.HeadCell>
                                     <span className="sr-only">
                                         Edit
                                     </span>
-                                </Table.HeadCell>
-                            </Table.Head>
-                            <Table.Body className="divide-y">
-                                {tamu}
-                            </Table.Body>
-                        </Table>
+                                    </Table.HeadCell>
+                                </Table.Head>
+                                <Table.Body className="divide-y">
+                                    {tamu}
+                                </Table.Body>
+                            </Table>
+                        )}
+
                     </div>
                     <CustomModal idTamu={idTamu} condition={condition} open={open} handleCLose={handleClose}/>
                 </div>
@@ -126,16 +144,16 @@ const Registrasi = ({daftarTamu}) => {
         </div>
     )
 }
-export async function getStaticProps(){
-
-    const res = await fetch(`${apiURL}/tamu`);
-    const daftarTamu = await res.json()
-
-    return {
-        props: {
-            daftarTamu: daftarTamu,
-
-        }
-    }
-}
+// export async function getStaticProps(){
+//
+//     const res = await fetch(`${apiURL}/tamu`);
+//     const daftarTamu = await res.json()
+//
+//     return {
+//         props: {
+//             daftarTamu: daftarTamu,
+//
+//         }
+//     }
+// }
 export default Registrasi

@@ -4,7 +4,8 @@ const nextConfig = {
   env:{
     NEXT_APP_NAME: 'coba env',
     NEXT_API_URL: 'https://invit-server.herokuapp.com/api',
-    NEXT_QR_LINK: 'https://register-app-nine.vercel.app/'
+    NEXT_QR_LINK: 'https://register-app-nine.vercel.app/',
+    LOCAL_API_URL: ''
   }
 }
 

@@ -5,3 +5,9 @@ export const loadDetailTamu = async (id) => {
 
     return message
 }
+
+export const loadDataTamu = async () => {
+    const res = await fetch(`${apiUrl}/tamu`);
+    const {message} = await res.json()
+    return message
+}

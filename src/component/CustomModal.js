@@ -27,6 +27,7 @@ export const styles = {
 const CustomModal = ({open, handleCLose, condition, idTamu}) => {
     const apiUrl = process.env.NEXT_API_URL
     const router = useRouter()
+    const [dataTamu, setDataTamu] = useState(null)
 
     const addData = (dataTamu) => {
         console.log("cuy",dataTamu)
@@ -65,17 +66,13 @@ const CustomModal = ({open, handleCLose, condition, idTamu}) => {
                 <Formik initialValues={initialTamu} onSubmit={(values, {setSubmitting, resetForm}) => {
                     const data = {...values, keteranganTamu: idKeluarga, umur: jenisUmur}
                     setTimeout(() => {
-                        // alert(JSON.stringify({...values, keteranganTamu: idKeluarga, umur: jenisUmur}, null, 2))
                         setDataTamu({...values, keteranganTamu: idKeluarga, umur: jenisUmur})
                         addData(data)
                         setSubmitting(false);
-                        router.push('/registrasi')
                         resetForm({values: ''})
                         setSelectedDropdown("Pilih Jenis Tamu")
                         setSelectedUmur("Pilih Umur")
                         handleCLose()
-                        window.location.reload(true)
-
                     }, 400)
                 }}>
                     {({isSubmitting, values}) => (
