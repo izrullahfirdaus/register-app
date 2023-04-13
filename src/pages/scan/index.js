@@ -1,5 +1,6 @@
 import {useState} from "react";
-// import {QrReader} from 'react-qr-reader';
+import {QrReader} from "react-qr-reader";
+
 const Scan = () => {
 
     const [startScan, setStartScan] = useState(false);
@@ -15,6 +16,7 @@ const Scan = () => {
             console.log(`loaded >>>`, scanData);
             setData(scanData);
             setStartScan(false);
+            alert(scanData)
             // setLoadingScan(false);
             // setPrecScan(scanData);
         }
@@ -30,19 +32,22 @@ const Scan = () => {
                 Scan Tamu Undangan
             </h2>
             <div className="grid mt-5">
+                <div className="mx-auto">
+                    <button className="px-4 py-2 bg-blue-500 rounded-lg" onClick={handleScan}>Start Scan</button>
+                </div>
                 <div>
                     {!startScan ? btnStartScan : btnStopScan}
                 </div>
                 <div>
                     {startScan && (
-                        <>
-                            {/*<QrReader*/}
-                            {/*    facingMode="environment"*/}
-                            {/*    onError={handleError}*/}
-                            {/*    onScan={handleScan}*/}
-                            {/*    style={{ width: "300px" }}*/}
-                            {/*/>*/}
-                        </>
+                        <div className="h-1/2 w-1/2">
+                            <QrReader
+                                facingMode="environment"
+                                onError={handleError}
+                                onScan={handleScan}
+                                style={{ width: "300px" }}
+                            />
+                        </div>
                     )}
                 </div>
                 {data}
