@@ -109,7 +109,7 @@ const Registrasi = () => {
 
     return (
         <div className="grid h-screen place-items-center sm:px-5">
-            <div className=" h-3/4 bg-white shadow rounded-lg overflow-scroll">
+            <div className="h-3/4 bg-white shadow rounded-lg overflow-scroll">
                 <div className="grid gap-4 mt-3">
                     <div>
                         <p className="text-center font-bold">Daftar Tamu</p>
