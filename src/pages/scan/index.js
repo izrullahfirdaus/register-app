@@ -13,12 +13,12 @@ const Scan = () => {
     const handleScan = async (scanData) => {
         console.log(`loaded data data`, scanData);
         if (scanData && scanData !== "") {
+            alert(scanData)
             console.log(`loaded >>>`, scanData);
             setData(scanData);
             setStartScan(false);
             alert(scanData)
-            // setLoadingScan(false);
-            // setPrecScan(scanData);
+            setLoadingScan(false);
         }
     }
 
@@ -42,7 +42,7 @@ const Scan = () => {
                     {startScan && (
                         <div className="h-1/2 w-1/2">
                             <QrReader
-                                facingMode="environment"
+                                constraints={{facingMode: 'environment'}}
                                 onError={handleError}
                                 onScan={handleScan}
                                 style={{ width: "300px" }}
@@ -50,7 +50,9 @@ const Scan = () => {
                         </div>
                     )}
                 </div>
-                {data}
+                <h1>
+                    {data}
+                </h1>
             </div>
         </>
     )
