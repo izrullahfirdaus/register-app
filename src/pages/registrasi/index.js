@@ -6,6 +6,7 @@ import {loadDataTamu} from "@/cons/fun";
 import loading from "@/pages/static/loading.json"
 import Lottie from "lottie-react";
 
+
 const Registrasi = () => {
     const [open, setOpen] = useState(false);
     const [openQr, setOpenQr] = useState(false);
@@ -16,7 +17,9 @@ const Registrasi = () => {
     useEffect(() => {
         if(!condition) {
             loadDataTamu().then((res) => {
-                setDaftarTamu(res)
+                const {message, count} = res
+                console.log("di loading tamu",message)
+                setDaftarTamu(message)
             })
         }
 
@@ -30,8 +33,6 @@ const Registrasi = () => {
         setOpen(false)
         setCondition(null)
     }
-
-    const handleCloseQr = () => setOpenQr(false)
 
 
     const tableHead = thead.map((th, index) => {
@@ -59,14 +60,16 @@ const Registrasi = () => {
         const checkTamu = (id) => {
             switch (id) {
                 case 1:
-                    return "Tamu"
-                case 2:
                     return "Keluarga Arsyad"
+                case 2:
+                    return "Keluarga Sanusi"
                 case 3:
                     return "Keluarga Zainuddin"
                 case 4:
-                    return "Koordinator"
+                    return "Tamu"
                 case 5:
+                    return "VIP"
+                case 6:
                     return "Pengurus Panti"
             }
         }
@@ -106,7 +109,6 @@ const Registrasi = () => {
             </Table.Row>
         )
     })
-
     return (
         <div className="grid h-screen place-items-center sm:px-5">
             <div className="h-3/4 bg-white shadow rounded-lg overflow-scroll">
@@ -121,19 +123,22 @@ const Registrasi = () => {
                         {!daftarTamu ? (
                             <Lottie animationData={loading} loop={true}/>
                         ) : (
-                            <Table hoverable={true} >
-                                <Table.Head>
-                                    {tableHead}
-                                    <Table.HeadCell>
+                            <>
+                                <Table hoverable={true} >
+                                    <Table.Head>
+                                        {tableHead}
+                                        <Table.HeadCell>
                                     <span className="sr-only">
                                         Edit
                                     </span>
-                                    </Table.HeadCell>
-                                </Table.Head>
-                                <Table.Body className="divide-y">
-                                    {tamu}
-                                </Table.Body>
-                            </Table>
+                                        </Table.HeadCell>
+                                    </Table.Head>
+                                    <Table.Body className="divide-y">
+                                        {tamu}
+                                    </Table.Body>
+                                </Table>
+                            </>
+
                         )}
 
                     </div>

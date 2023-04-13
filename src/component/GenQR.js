@@ -29,14 +29,16 @@ const GenQR = ({id, handleClose}) => {
     const checkTamu = (id) => {
         switch (id) {
             case 1:
-                return "Tamu"
-            case 2:
                 return "Keluarga Arsyad"
+            case 2:
+                return "Keluarga Sanusi"
             case 3:
                 return "Keluarga Zainuddin"
             case 4:
-                return "Koordinator"
+                return "Tamu"
             case 5:
+                return "VIP"
+            case 6:
                 return "Pengurus Panti"
         }
     }

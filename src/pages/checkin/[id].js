@@ -28,6 +28,24 @@ const Checkin = () => {
             })
     }
 
+    const checkTamu = (id) => {
+        switch (id) {
+            case 1:
+                return "Keluarga Arsyad"
+            case 2:
+                return "Keluarga Sanusi"
+            case 3:
+                return "Keluarga Zainuddin"
+            case 4:
+                return "Tamu"
+            case 5:
+                return "VIP"
+            case 6:
+                return "Pengurus Panti"
+        }
+    }
+
+
     useEffect(() => {
 
         detailTamu(id)
@@ -60,7 +78,7 @@ const Checkin = () => {
 
     return(
         <div className="grid h-screen place-items-center sm:px-5">
-            <div className="h-3/4 w-3/4 bg-white shadow rounded-lg overflow-hidden px-5">
+            <div className="h-3/4 w-3/4 bg-white shadow rounded-lg overflow-hidden">
                 {!data ? (
                     <Lottie animationData={loading} loop={true} />
                 ) : (
@@ -80,7 +98,27 @@ const Checkin = () => {
                         <div className="text-center text-lg px-2">
                             {data.statusCheckin ? (
                                 <div>Tamu atas nama <p className="text-red-400 font-bold">{data.namaTamu}</p> udah pernah check in</div>
-                            ) : (<div>Tamu atas nama <p className="text-green-400 font-bold">{data.namaTamu}</p> mau check in</div>)}
+                            ) : (
+                                <table className="table-auto mx-auto text-left pl-1">
+                                    <tbody>
+                                    <tr>
+                                        <td className="text-sm">Nama Tamu</td>
+                                        <td className="text-sm pl-1">:</td>
+                                        <td> <p className="font-bold text-sm px-2">{data.namaTamu}</p></td>
+                                    </tr>
+                                    <tr>
+                                        <td className="text-sm">Jenis Tamu</td>
+                                        <td className="text-sm pl-1">:</td>
+                                        <td> <p className="font-bold px-2 text-sm">{checkTamu(data.keteranganTamu)}</p></td>
+                                    </tr>
+                                    <tr>
+                                        <td className="text-sm">Catatan</td>
+                                        <td className="text-sm pl-1">:</td>
+                                        <td> <p className="font-bold px-2 text-sm">{data.notes}</p></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            )}
                         </div>
                         {data.statusCheckin ? "" : (
                             <div className="flex flex-row justify-center">

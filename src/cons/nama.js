@@ -29,8 +29,9 @@ export const thead = [
 
 export const keteranganTamu = [
     {id: 1, keterangan: 'Keluarga Arsyad'},
-    {id: 2, keterangan: 'Keluarga Zainuddin'},
-    {id: 3, keterangan: 'Tamu'},
-    {id: 4, keterangan: 'Koordinator Panti'},
-
+    {id: 2, keterangan: 'Keluarga Sanusi'},
+    {id: 3, keterangan: 'Keluarga Zainuddin'},
+    {id: 4, keterangan: 'Tamu'},
+    {id: 5, keterangan: 'VIP'},
+    {id: 6, keterangan: 'Pengurus Panti'},
 ]
