@@ -4,8 +4,11 @@ import {loadDetailTamu} from "@/cons/fun";
 import {useState} from "react";
 import loading from "@/pages/static/loading.json"
 import Lottie from "lottie-react";
+import * as htmlToImage from 'html-to-image'
+import {useRef} from "react";
 
 const GenQR = ({id, handleClose}) => {
+    const domEl = useRef(null)
     const [data, setData] = useState(null)
 
     loadDetailTamu(id).then((res) => {
@@ -18,10 +21,34 @@ const GenQR = ({id, handleClose}) => {
         <QRCodeCanvas
             value={dataValue}
             id="qrCode"
-            size={300}
-            level={"H"} />
-
+            level={"H"}
+            style={300}
+        />
     )
+
+    const checkTamu = (id) => {
+        switch (id) {
+            case 1:
+                return "Tamu"
+            case 2:
+                return "Keluarga Arsyad"
+            case 3:
+                return "Keluarga Zainuddin"
+            case 4:
+                return "Koordinator"
+            case 5:
+                return "Pengurus Panti"
+        }
+    }
+
+    const handleDownloadQR = async () => {
+        const dataUrl = await htmlToImage.toPng(domEl.current);
+
+        const link = document.createElement("a");
+        link.download = `qr-${data.namaTamu}.png`;
+        link.href = dataUrl;
+        link.click()
+    }
     return (
         <>
             <Modal.Header>
@@ -32,14 +59,19 @@ const GenQR = ({id, handleClose}) => {
                     {!data ? (
                         <Lottie animationData={loading} loop={true} />
                     ) : (
-                        <>
-                            <div className="place-items-center">
+                        <div id="domEl" ref={domEl} className="grid place-items-center bg-white p-5">
+                            <div className="grid place-items-center">
                                 <table className="table-auto mx-auto">
                                     <tbody>
                                         <tr>
                                             <td>Nama Tamu</td>
                                             <td>:</td>
                                             <td> <p className="font-bold text-md px-2">{data.namaTamu}</p></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Jenis Tamu</td>
+                                            <td>:</td>
+                                            <td> <p className="font-bold text-md px-2">{checkTamu(data.keteranganTamu)}</p></td>
                                         </tr>
                                         <tr>
                                             <td>Catatan</td>
@@ -49,16 +81,18 @@ const GenQR = ({id, handleClose}) => {
                                     </tbody>
                                 </table>
                             </div>
-                            <div className="mx-auto mt-5">
+                            <div className="mt-5">
                                 {qrCode}
                             </div>
-                        </>
+                        </div>
 
                     )}
                 </div>
             </Modal.Body>
             <Modal.Footer>
                 <button className="px-4 py-2 bg-gray-400 rounded-lg" onClick={handleClose}>Tutup</button>
+                <button className="ml-3 px-4 py-2 bg-blue-500 rounded-lg" onClick={handleDownloadQR}>Download QR</button>
+
             </Modal.Footer>
         </>
     )
