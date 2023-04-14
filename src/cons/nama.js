@@ -30,8 +30,14 @@ export const thead = [
 export const keteranganTamu = [
     {id: 1, keterangan: 'Keluarga Arsyad'},
     {id: 2, keterangan: 'Keluarga Sanusi'},
-    {id: 3, keterangan: 'Keluarga Zainuddin'},
-    {id: 4, keterangan: 'Tamu'},
-    {id: 5, keterangan: 'VIP'},
-    {id: 6, keterangan: 'Pengurus Panti'},
+    {id: 3, keterangan: 'Keluarga Petta Walenreng'},
+    {id: 4, keterangan: 'Keluarga Petta Taba'},
+    {id: 5, keterangan: 'Keluarga Pg Lisa'},
+    {id: 6, keterangan: 'Keluarga Pg Asseng'},
+    {id: 7, keterangan: 'Keluarga Pg Lebbi'},
+    {id: 8, keterangan: 'Keluarga Pg Mursida'},
+    {id: 9, keterangan: 'Keluarga Zainuddin'},
+    {id: 10, keterangan: 'Tamu'},
+    {id: 11, keterangan: 'VIP'},
+    {id: 12, keterangan: 'Pengurus Panti'},
 ]

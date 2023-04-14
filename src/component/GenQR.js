@@ -33,13 +33,25 @@ const GenQR = ({id, handleClose}) => {
             case 2:
                 return "Keluarga Sanusi"
             case 3:
-                return "Keluarga Zainuddin"
+                return "Keluarga Petta Walenreng"
             case 4:
-                return "Tamu"
+                return "Keluarga Petta Taba"
             case 5:
-                return "VIP"
+                return "Keluarga Pg Lisa"
             case 6:
-                return "Pengurus Panti"
+                return "Keluarga Pg Asseng"
+            case 7:
+                return "Keluarga Pg Lebbi"
+            case 8:
+                return "Keluarga Pg Mursida"
+            case 9:
+                return "Keluarga Zainuddin"
+            case 10:
+                return "Tamu"
+            case 11:
+                return "Koordinator"
+            case 12:
+                return "VIP"
         }
     }
 
