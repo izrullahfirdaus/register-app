@@ -78,11 +78,58 @@ const Registrasi = () => {
                 case 9:
                     return "Keluarga Zainuddin"
                 case 10:
-                    return "Tamu"
+                    return "Keluarga Te Murni"
                 case 11:
-                    return "Koordinator"
+                    return "Keluarga Maros"
                 case 12:
+                    return "Keluarga Maccini"
+                case 13:
+                    return "Keluarga Ali Akbar"
+                case 14:
+                    return "Keluarga Dg Gassing"
+                case 15:
+                    return "Keluarga Dato  Sikki"
+                case 16:
+                    return "Keluarga Dato Liang"
+                case 17:
+                    return "Keluarga Cucu Dato Liang"
+                case 18:
+                    return "Keluarga Dato Soleh"
+                case 19:
+                    return "Keluarga Dato Intang"
+                case 20:
+                    return "Keluarga Cucu Dato Bau"
+                case 21:
+                    return "Keluarga Dato Intan"
+                case 22:
+                    return "Keluarga Dato Cenga"
+                case 23:
+                    return "Keluarga Om Tiro"
+                case 24:
+                    return "Keluarga Om Nasir Te Yuyu"
+                case 25:
+                    return "Keluarga Om Jonny"
+                case 26:
+                    return "Keluarga Te Murni"
+                case 27:
+                    return "Keluarga Zainal Abidin"
+                case 28:
+                    return "Keluarga Syarifuddin"
+                case 29:
+                    return "Keluarga Asdiana"
+                case 30:
+                    return "Keluarga Erny Mailangkay"
+                case 31:
+                    return "Keluarga Om Indar"
+                case 32:
+                    return "Keluarga Yunus dg Manasa"
+                case 33:
+                    return "Tamu"
+                case 34:
                     return "VIP"
+                case 35:
+                    return "Pengurus Panti"
+
             }
         }
 
