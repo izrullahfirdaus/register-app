@@ -62,5 +62,9 @@ export const keteranganTamu = [
     {id: 32, keterangan: 'Keluarga Yunus dg Manasa'},
     {id: 33, keterangan: 'Tamu'},
     {id: 34, keterangan: 'VIP'},
-    {id: 35, keterangan: 'Pengurus Panti'},
+    {id: 35, keterangan: 'Keluarga Pasni'},
+    {id: 36, keterangan: 'Keluarga Puang Mia'},
+    {id: 37, keterangan: 'Keluarga Puang Mene'},
+    {id: 38, keterangan: 'Keluarga Puang Alwi'},
+    {id: 39, keterangan: 'Keluarga Puang Sukri'},
 ]

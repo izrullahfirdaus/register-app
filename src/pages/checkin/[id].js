@@ -99,7 +99,15 @@ const Checkin = () => {
             case 34:
                 return "VIP"
             case 35:
-                return "Pengurus Panti"
+                return "Keluarga Pasni"
+            case 36:
+                return "Keluarga Puang Mia"
+            case 37:
+                return "Keluarga Puang Mene"
+            case 38:
+                return "Keluarga Puang Alwi"
+            case 39:
+                return "Keluarga Puang Sukri"
 
         }
     }
