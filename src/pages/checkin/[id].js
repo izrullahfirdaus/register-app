@@ -137,7 +137,7 @@ const Checkin = () => {
 
     return(
         <div className="grid h-screen place-items-center sm:px-5">
-            <div className="h-3/4 w-3/4 bg-white shadow rounded-lg overflow-hidden">
+            <div className="h-3/4 w-3/4 bg-white shadow rounded-lg overflow-scroll">
                 {!data ? (
                     <Lottie animationData={loading} loop={true} />
                 ) : (
